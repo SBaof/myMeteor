@@ -1,8 +1,8 @@
-SignUp = React.createClass({
-  render() {
+SignUp= React.createClass({
+  render(){
     return (
-      <div>
-        this is signup page
+      <div className="signup">
+        sign up page
       </div>
     );
   }

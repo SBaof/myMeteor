@@ -5,10 +5,10 @@ const {
 } = ReactRouter;
 
 const Routes = (
-  <Route path='/' component={App}>
-    <Route path='home' component={Home} />
-    <Route path='signup' component={SignUp} />
-    <Route path='login' component={LogIn} />
+  <Route path="/" component={App}>
+    <Route path="home" component={Home} />
+    <Route path="signup" component={SignUp} />
+    <Route path="login" component={LogIn} />
     <IndexRoute component={Home} />
   </Route>
 );
@@ -18,5 +18,5 @@ Meteor.startup(function() {
     <Router history={browserHistory}>
       {Routes}
     </Router>
-  ), document.getElementById('container'));
+  ), document.getElementById("container"));
 });

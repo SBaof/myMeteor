@@ -1,14 +1,16 @@
 const { Link } = ReactRouter;
 
 App = React.createClass({
-  render() {
+  contextTypes: {
+    context: React.PropTypes.object.isRequired
+  },
+
+  render(){
     return (
-      <div>
-        <Link to='/home'> Home </Link>
-        <Link to='/signup'> Sign Up </Link>
-        <Link to='/login'> Log In </Link>
-        <br />
+      <div className="app-wrap">
+        <NavBar />
         { this.props.children }
+        <Footer />
       </div>
     );
   }

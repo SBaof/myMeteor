@@ -1,12 +1,11 @@
 const { RaisedButton } = mui;
-
 Home = React.createClass({
-  render() {
+  render(){
     return (
-      <div>
-        <RaisedButton label='Hello world'
-                      primary={true}
-        />
+      <div className="home">
+        <div className="slogan">
+          welcome to stage 3
+        </div>
       </div>
     );
   }
