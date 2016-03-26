@@ -1,7 +1,7 @@
 LogIn = React.createClass({
   render() {
     return (
-      <div>
+      <div className='login'>
         this is login page
       </div>
     );
