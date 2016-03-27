@@ -31,7 +31,8 @@ NavBar = React.createClass({
   _getSelectedIndex() {
     return this.context.router.isActive('/home') ? '/home' :
       this.context.router.isActive('/signup') ? '/signup' :
-      this.context.touter.isActive('login') ? '/login' : '/home';
+      this.context.router.isActive('/account') ? '/account' :
+      this.context.router.isActive('login') ? '/login' : '';
   },
 
   render() {
@@ -52,6 +53,8 @@ NavBar = React.createClass({
       }
     };
 
+    let currentUser = Meteor.user();
+
     return (
       <div className='app-header'>
         <Tabs
@@ -65,8 +68,8 @@ NavBar = React.createClass({
           value='/home'
           style={styles.tab} />
        <Tab
-          label='Sign up'
-          value='/signup'
+          label={ currentUser ? 'acconut' : 'sign up' }
+          value={ currentUser ? '/acconut' : '/signup' }
           style={styles.tab} />
         <Tab
           label='log in'
