@@ -10,6 +10,7 @@ const Routes = (
     <Route path='signup' component={SignUp} />
     <Route path='login' component={LogIn} />
     <Router path='account' component={Account} />
+    <Router path='chat' component={Chat} />
     <IndexRoute component={Home} />
   </Route>
 );
