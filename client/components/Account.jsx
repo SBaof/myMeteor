@@ -11,11 +11,11 @@ Account = React.createClass({
       <div className='account'>
         <Card className='content'>
           <form onSubmit={this._handleSubmit}>
-            <TextField 
+            <TextField
               hintText='GitHub Account'
               refs='username' />
 
-            <FlatButton 
+            <FlatButton
               type='submit'
               primary={true}
               label='search github' />

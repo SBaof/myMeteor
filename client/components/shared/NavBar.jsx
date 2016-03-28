@@ -17,6 +17,12 @@ NavBar = React.createClass({
     });
   },
 
+  componentDidMount() {
+    this.setState({
+      tabIndex: this._getSelectedIndex(),
+    });
+  },
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       tabIndex: this._getSelectedIndex(),
@@ -24,7 +30,7 @@ NavBar = React.createClass({
   },
 
   _handleTabsChange(value) {
-    this.context.router.push(value)
+    this.context.router.push(value);
     this.setState({tabsIndex: this._getSelectedIndex()});
   },
 
@@ -32,7 +38,7 @@ NavBar = React.createClass({
     return this.context.router.isActive('/home') ? '/home' :
       this.context.router.isActive('/signup') ? '/signup' :
       this.context.router.isActive('/account') ? '/account' :
-      this.context.router.isActive('login') ? '/login' : '';
+      this.context.router.isActive('/login') ? '/login' : '';
   },
 
   render() {
@@ -53,13 +59,22 @@ NavBar = React.createClass({
       }
     };
 
-    let currentUser = Meteor.user();
+    let currentUser = this.props.currentUser;
+
+    let logOutMenu;
+    if (currentUser) {
+      logOutMenu = (
+        <LogOutMenu currentUser={currentUser} />
+      );
+    } else {
+      logOutMenu = '';
+    }
 
     return (
       <div className='app-header'>
         <Tabs
           style={styles.tabs}
-          tabIterContainerStyle={{backgroundColor: 'transparent'}}
+          tabItemContainerStyle={{backgroundColor: 'transparent'}}
           inkBarStyle={styles.inkBar}
           value={this.state.tabIndex}
           onChange={this._handleTabsChange}>
@@ -68,14 +83,15 @@ NavBar = React.createClass({
           value='/home'
           style={styles.tab} />
        <Tab
-          label={ currentUser ? 'acconut' : 'sign up' }
-          value={ currentUser ? '/acconut' : '/signup' }
+          label={ currentUser ? 'account' : 'sign up' }
+          value={ currentUser ? '/account' : '/signup' }
           style={styles.tab} />
         <Tab
           label='log in'
           value='/login'
           style={styles.tab} />
         </Tabs>
+        { logOutMenu }
       </div>
     );
   }

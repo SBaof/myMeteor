@@ -35,7 +35,7 @@ SignUp = React.createClass({
   getStyle() {
     return {
       textField: {
-        display: 'bloock',
+        display: 'block',
         width: '100%'
       },
 
